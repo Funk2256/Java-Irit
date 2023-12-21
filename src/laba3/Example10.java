@@ -15,7 +15,7 @@ public class Example10 {
             array[i] = random.nextInt(100) + 1;
         }
         System.out.println(Arrays.toString(array));
-        
+
         Arrays.sort(array);
         for (int i = array.length - 1; i >= 0; i--) {
             System.out.print(array[i] + " ");
