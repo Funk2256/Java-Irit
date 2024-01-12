@@ -19,5 +19,5 @@ public class Example7 {
         }
         return intArray;
         }
-    
+
 }
