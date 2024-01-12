@@ -3,7 +3,7 @@ package laba6;
 public class Example2 {
     public static void main(String[] args) {
         int fullcount = 10;
-        for (int i = 0; i <= fullcount; i++){
+        for (int i = 0; i < fullcount; i++){
             My_class.getInteger();
         }
     }
