@@ -1,23 +1,17 @@
 package laba7.example5;
 
+import laba7.example2.SubClassTest;
+
 public class OneSubClass extends SuperClass{
     private int privateInteger;
 
    OneSubClass(String str1, int privateInteger) {
-        this.privateInteger = privateInteger;
-        super.setStr1(str1);
+       super(str1);
+       this.privateInteger = privateInteger;
     }
-
     @Override
-    public String showInfo(){
-        return "String: " + str1 + "\n" +"Class name: " + OneSubClass.this.getClass().getName()
-                + "\n" + "Integer: " + privateInteger;
+    public String getInfo() {
+        return super.getInfo() + "\n" +"Integer: " + privateInteger;
     }
-
-//    public OneSubClass(String str1, int privateInteger){
-//        OneSubClass testOneSubClass = new OneSubClass(str1, privateInteger);
-//        testOneSubClass.str1 = super.str1;
-//        testOneSubClass.privateInteger = this.privateInteger;
-//    }
 
 }

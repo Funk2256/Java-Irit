@@ -2,11 +2,18 @@ package laba7.example5;
 
 public class Main {
     public static void main(String[] args) {
-        SuperClass testOne = new SuperClass("Test string one");
-        System.out.println(testOne.showInfo());
 
-        OneSubClass testOneSubClass = new OneSubClass("XXX", 10);
-        System.out.println(testOneSubClass.showInfo());
+        SuperClass testSuperClass = new SuperClass("Test string Super Class");
+        System.out.println("\n" + testSuperClass.getInfo() + "\n");
+
+        OneSubClass testOneSubClass = new OneSubClass("null", 10);
+        testOneSubClass.setStr1("Test String OneSub Class");
+//        System.out.println(testOneSubClass.toString());
+        System.out.println(testOneSubClass.getInfo());
+
+        TwoSubClass testTwoSubClass = new TwoSubClass("null", 'A');
+        testTwoSubClass.setStr1("Test String TwoSub Class");
+        System.out.println(testTwoSubClass.getInfo());
     }
 }
 

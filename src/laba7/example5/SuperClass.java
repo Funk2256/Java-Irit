@@ -7,11 +7,13 @@ public class SuperClass {
         this.str1 = str1;
     }
 
-    public String showInfo() {
-        return "String: " + str1 + "\n" +"Class name: " + SuperClass.this.getClass().getName();
+    public String getInfo() {
+        return "String: " + str1 + "\n" +"Class name: " +
+                SuperClass.this.getClass().getName();
     }
 
     public void setStr1(String str1) {
         this.str1 = str1;
+
     }
 }
