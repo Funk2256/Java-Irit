@@ -10,7 +10,7 @@ class Node {
     }
 }
 
-public class Example6 { //Главный класс
+public class Task4 { //Главный класс
     public static void main(String[] args) {
         Node node0 = new Node(0, null);
         Node node1 = new Node(1, null);
