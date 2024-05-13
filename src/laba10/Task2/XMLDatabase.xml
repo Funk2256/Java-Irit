@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<database>
+    <movie>
+        <title>Министерство неджентльменских дел</title>
+        <year>2024</year>
+        <country>США</country>
+        <genre>Боевик</genre>
+        <time>120min</time>
+    </movie>
+    <movie>
+        <title>Всемирный потоп</title>
+        <year>2023</year>
+        <country>США</country>
+        <genre>Драмма</genre>
+        <time>102min</time>
+    </movie>
+    <movie>
+        <title>Блиндаж</title>
+        <year>2024</year>
+        <country>Россия</country>
+        <genre>Боевик</genre>
+        <time>114min</time>
+    </movie>
+</database>
