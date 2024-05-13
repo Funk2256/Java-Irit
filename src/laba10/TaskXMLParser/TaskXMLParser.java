@@ -1,4 +1,4 @@
-package laba10.Task2;
+package laba10.TaskXMLParser;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
