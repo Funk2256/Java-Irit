@@ -29,7 +29,8 @@ public class Task1 {
 
     }
 
-    public static int[] filterEvenNumber(int[] arr) {
+    public static int[] filterEvenNumber(int[] arr)
+    {
         return Arrays.stream(arr).filter(x-> x % 2 == 0).toArray();
     }
 }
