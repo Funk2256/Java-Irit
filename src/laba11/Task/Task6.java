@@ -1,37 +1,64 @@
 package laba11.Task;
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+
+import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class Task6 {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите число для деления без остатка: ");
-        int num = scanner.nextInt();
-        int[] arr = new int[10];
+    public static int findMaxNum(int[] array) {
+        int cores = Runtime.getRuntime().availableProcessors();
+        System.out.println("Количество доступных ядер: " + cores);
 
-        Random random = new Random();
+        ExecutorService executor = Executors.newFixedThreadPool(cores);
+        Future<Integer>[] futures = new Future[cores];
 
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(1000);
+        final int SizeChunk = array.length / cores;
+
+        for (int i = 0; i <cores; i++) {
+            final int start = i * SizeChunk;
+            final int end = (i == cores - 1) ? array.length : (i + 1) * SizeChunk;
+            futures[i] = executor.submit(() -> {
+                int max = Integer.MIN_VALUE;
+                for (int j = start; j < end; j++) {
+                    if (array[j] > max) {
+                        max = array[j];
+                    }
+                }
+                return max;
+            });
         }
 
-        System.out.println("Массив рандомных чисел : ");
-        System.out.println(Arrays.toString(arr));
+        int globalMax = Integer.MIN_VALUE;
+        for (int i = 0; i < cores; i++) {
+            try {
+                int maxInChunk = futures[i].get();
+                if (maxInChunk > globalMax) {
+                    globalMax = maxInChunk;
+                }
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
 
-        int[] arrResult = filterEvenNumber(arr, num);
-
-        System.out.println("Массив чисел которые делятся без отсатка на заданное число : ");
-        System.out.println(Arrays.toString(arrResult));
-
+        executor.shutdown();
+        return globalMax;
     }
 
-    public static int[] filterEvenNumber(int[] arr, Integer num) {
-        return Arrays.stream(arr).filter(x-> x % num == 0).toArray();
+    public static void main(String[] args) {
+        Random random = new Random();
+        int[] array = new int[10];
+
+        for (int i = 0; i < 10; i++) {
+            array[i] = random.nextInt(100);
+        }
+
+        System.out.println(Arrays.toString(array));
+
+        int max = findMaxNum(array);
+        System.out.println("Максимальный элекмент: " + max);
     }
 }
-
-//Напишите функцию, которая принимает на вход список целых чисел и возвращает новый список,
-//содержащий только те числа, которые делятся на заданное число без остатка.
